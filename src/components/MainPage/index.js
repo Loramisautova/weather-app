@@ -1,36 +1,67 @@
 import React from 'react';
 
+import { SearchBar } from './SearchBar/index';
+import { Result } from './Result/index';
+
+
 export class MainPage extends React.PureComponent {
 
     state = {
-        query: "",
-        text: ""
+        value: '',
+        temperature: undefined, 
+        city: undefined,
+        country: undefined,
+        wind: undefined,
+        humidity: undefined,
+        feelsLike: undefined
     }
 
-    handleChange = (e) => {
-        this.setState({ query: e.target.value });
+    handleInputChange = (e) => {
+        this.setState({
+          value: e.target.value,
+        });
+      };    
+
+    handleSearchCity = async (e) => {
+        e.preventDefault();
+        const { value } = this.state;
+        const API_KEY = '7fa5f0fb6c1c76373c9c715e63ef8768';
+
+        try {
+          const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${API_KEY}&units=metric`);
+          const data = await request.json();
+          console.log(data)
+
+          this.setState({
+            temperature: data.main.temp,
+            city: data.name,
+            country: data.sys.country,
+            wind: data.wind.speed,
+            humidity: data.main.humidity
+          });
+        } catch (e) {
+          console.error(e);
+        }
     }
 
-    handleSubmit = () => {
-        this.setState({ text: this.state.query });
-    }
-
-    render () {
+    render() {
         return (
             <div>
-                <input
-                    type="text"
+                <SearchBar 
                     value={this.state.value}
-                    onChange={this.handleChange}
-                    placeholder="Search for Location / City"
+                    change={this.handleInputChange}
+                    submit={this.handleSearchCity}
                 />
-                <button 
-                    onClick={this.handleSubmit}
-                >   
-                Search
-                </button>
-                <div> {this.state.text} </div>
-          </div>
-        );
+            {this.state.city && 
+                <Result 
+                  temp={this.state.temperature}
+                  city={this.state.city}
+                  country={this.state.country}
+                  wind={this.state.wind}
+                  humidity={this.state.humidity}
+                />
+            }
+            </div>
+        )
     }
-  }
+} 
