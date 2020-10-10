@@ -1,5 +1,5 @@
+import React from 'react'
 import { Grid } from "@material-ui/core";
-import React from 'react';
 
 import { SearchBar } from './SearchBar/index';
 import { Result } from './Result/index';

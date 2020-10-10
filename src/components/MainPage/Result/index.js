@@ -1,7 +1,8 @@
 import React from 'react';
-import "./index.css";
 
 import { Grid } from "@material-ui/core";
+
+import "./index.css";
 
 export class Result extends React.PureComponent {
 
