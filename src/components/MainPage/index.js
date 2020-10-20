@@ -1,14 +1,15 @@
 import React from 'react'
+
 import { Grid } from "@material-ui/core";
 
 import { SearchBar } from './SearchBar/index';
 import { Result } from './Result/index';
+import { WeatherMap } from './WeatherMap/index';
 
 export class MainPage extends React.PureComponent {
-
     state = {
         address: '',
-        result: undefined
+        result: undefined 
     }
 
     handleSearchCity = async (address) => {
@@ -30,6 +31,8 @@ export class MainPage extends React.PureComponent {
     }
 
     render() {
+      const { result } = this.state;
+      
         return (
             <div className='visibility-panel'>
               <Grid container justify="center">
@@ -38,8 +41,15 @@ export class MainPage extends React.PureComponent {
                     onSearch={this.handleSearchCity}
                   />
                   <Result 
-                    result={this.state.result}
+                    result={result}
                   />
+                  {result ? [result].map(item => 
+                    <WeatherMap 
+                      coord={item.coord}
+                      key={item}
+                    />
+                  )  : []
+                  }
                 </Grid>
               </Grid>
             </div>

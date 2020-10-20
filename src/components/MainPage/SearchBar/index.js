@@ -4,9 +4,9 @@ import {Button, Grid, TextField} from "@material-ui/core";
 import { Autocomplete } from '@material-ui/lab';
 
 import "./index.css";
+import { debounce } from 'lodash';
 
 export class SearchBar extends React.PureComponent {
-   
     state = {
         address: '',
         suggestions: []
@@ -16,7 +16,7 @@ export class SearchBar extends React.PureComponent {
         this.props.onSearch(this.state.address);
     };
 
-    getSuggestions = async () => {
+    getSuggestions = debounce(async () => {
         const API_KEY = '4bf4c660-0729-11eb-b357-a938736de318';
         const { address } = this.state;
 
@@ -29,17 +29,19 @@ export class SearchBar extends React.PureComponent {
             } catch (e) {
                 console.error(e);
             }
-    }
+    }, 500);
 
     async componentDidUpdate (prevProps, prevState) {
         const { address } = this.state;
 
         if(prevState.address !== address && address.length >= 3) {
             const suggestions = await this.getSuggestions(address);
-    
+        
+        if(suggestions) {
             this.setState({ suggestions });
         }
-     }
+        }
+    }
 
     handleChange = (e) => {
         this.setState({ address: e.target.value});
@@ -55,10 +57,11 @@ export class SearchBar extends React.PureComponent {
 
         return (
             <Grid container alignContent="center">
-                <Grid container item xs={10} sm={8} alignItems="center">
+                <Grid item xs={10} alignItems="center">
                     <div className='search-text-field'>
                         <Autocomplete 
                             freeSolo
+                            fullWidth
                             id="free-solo-2-demo"
                             disableClearable
                             options={suggestions}
@@ -66,6 +69,7 @@ export class SearchBar extends React.PureComponent {
                             renderInput={(params) => (
                                 <TextField
                                     {...params}
+                                    fullWidth
                                     label="Search city"
                                     margin="normal"
                                     variant="outlined"
