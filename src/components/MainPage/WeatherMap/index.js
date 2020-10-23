@@ -9,7 +9,7 @@ export class WeatherMap extends React.PureComponent {
 
     render() {
         const { coord } = this.props;
-
+        
         return (
             <div> 
                 <Map 

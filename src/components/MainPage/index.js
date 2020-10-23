@@ -6,6 +6,8 @@ import { SearchBar } from './SearchBar/index';
 import { Result } from './Result/index';
 import { WeatherMap } from './WeatherMap/index';
 
+import { data } from '../../consts'
+
 export class MainPage extends React.PureComponent {
     state = {
         address: '',
@@ -13,21 +15,21 @@ export class MainPage extends React.PureComponent {
     }
 
     handleSearchCity = async (address) => {
-        const API_KEY = '7fa5f0fb6c1c76373c9c715e63ef8768';
-
-        if (address) {
-          try {
-            const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${API_KEY}&units=metric`);
-            const result = await request.json();
-            console.log(result)
+        this.setState({ result: data });
+      // const API_KEY = '7fa5f0fb6c1c76373c9c715e63ef8768';
+      //   }) {
+      //     try {
+      //       const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${API_KEY}&units=metric`);
+      //       const result = await request.json();
+      //       console.log(result)
   
-            this.setState({
-              result
-            });
-        } catch (e) {
-          console.error(e);
-        }
-      }
+      //       this.setState({
+      //         result
+      //       });
+      //   } catch (e) {
+      //     console.error(e);
+      //   }
+      // }
     }
 
     render() {
@@ -43,12 +45,9 @@ export class MainPage extends React.PureComponent {
                   <Result 
                     result={result}
                   />
-                  {result ? [result].map(item => 
-                    <WeatherMap 
-                      coord={item.coord}
-                      key={item}
-                    />
-                  )  : []
+                  {
+                    result &&
+                    <WeatherMap coord={result.coord}/>
                   }
                 </Grid>
               </Grid>
