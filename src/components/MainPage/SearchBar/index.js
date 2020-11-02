@@ -5,7 +5,7 @@ import { Autocomplete } from '@material-ui/lab';
 
 import "./index.css";
 
-//import { GEOCODE_API_KEY } from '../../consts.js';
+// import { GEOCODE_API_KEY } from '../../consts.js';
 
 export const SearchBar = (props) =>  {
     const [address, setAddress] = useState('');

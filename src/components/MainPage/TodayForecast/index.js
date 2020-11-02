@@ -16,7 +16,7 @@ export const TodayForecast = (props) => {
         return (<> 
                     <Box display = "flex" flexDirection = "column">
                         <Typography variant="h2" gutterBottom>
-                            {result.temp}<span>&#176;</span>
+                            {Math.round(result.temp - 273.15)}&deg;
                         </Typography>
                         <Typography component="div">
                             <Box fontWeight="fontWeightBold" m={1}>

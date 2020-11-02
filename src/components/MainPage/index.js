@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Grid } from "@material-ui/core";
 
-import { SearchBar } from './SearchBar/index';
-import { TodayForecast } from './TodayForecast/index';
-import { CityPanel } from './CityPanel/index';
+import { SidePanel } from './SidePanel';
+import { Content } from './Content';
+// import { WeatherForecast } from '../WeatherForecat/index';
 
 import "fontsource-roboto";
 
@@ -53,21 +53,24 @@ export class MainPage extends React.PureComponent {
       
         return (
             <div className='visibility-panel'>
-              <Grid container justify="center">
-                <Grid item xs={6}>
-                  <SearchBar
+              <Grid container>
+                <Grid item xs={3}>
+                  <SidePanel
+                    result={result}
+                    city={city}
                     onSearch={this.handleSearchCity}
                   />
-                  {
-                    result &&
-                    <TodayForecast result={result ? result.current : undefined} />
-                  }
-                  {
-                    city &&
-                   <CityPanel city={city ? city.text : undefined} />
-                  }
                 </Grid>
-              </Grid>
+                <Grid item xs={9}>
+                  <Content 
+                    result={result}
+                  />
+                </Grid>
+                  {/* {
+                    result &&
+                    <WeatherForecat result={result ? result.daily : undefined} />
+                  } */}
+                </Grid>
             </div>
         )
     }
