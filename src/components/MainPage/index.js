@@ -13,9 +13,12 @@ import { GEOCODE_API_KEY } from '../../consts.js';
 export class MainPage extends React.PureComponent {
     state = {
         address: '',
-        result: undefined, 
+        result: undefined,
+        isSubmitted: false,
         city: undefined,
     }
+
+    renderNotFound = () => <div> Not Found </div>
 
     handleSearchCity = async (address) => {
         // this.setState({ result: data });
@@ -39,17 +42,19 @@ export class MainPage extends React.PureComponent {
               this.setState({
                 result,
                 city: geoResult.geocoding.query, 
-              });
+                isSubmitted: true
+              }); 
             } else {
-              console.log('Not Found')
+              throw new Error('Not Found');
             }
         } catch (e) {
           console.error(e);
         } 
     }
+    
 
     render() {
-      const { result, city } = this.state;
+      const { result, city, isSubmitted } = this.state;
       
         return (
             <div className='visibility-panel'>
@@ -59,11 +64,12 @@ export class MainPage extends React.PureComponent {
                     result={result}
                     city={city}
                     onSearch={this.handleSearchCity}
+                    isSubmitted={isSubmitted}
                   />
                 </Grid>
                 <Grid item xs={9}>
                   <Content 
-                    result={result}
+                    forecast={result}
                   />
                 </Grid>
                   {/* {

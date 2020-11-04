@@ -8,24 +8,37 @@ import "./index.css";
 
 import { Grid } from "@material-ui/core";
 
-export const SidePanel = ({onSearch, result, city}) => {
+export const SidePanel = ({onSearch, result, city, isSubmitted }) => {
 
+    console.log("isSubmitted",isSubmitted);
+    console.log("result",result);
+
+    const renderNotFound = () => <div> Not Found </div>
+    
     return (
         <div className='side-panel'>
             <Grid container>
                 <Grid item xs={12}>
-                        <SearchBar
-                            onSearch={onSearch}
-                        />
+                    <SearchBar
+                        onSearch={onSearch}
+                    />
+                </Grid>
+                <Grid item xs={12}>
                     {
-                        result &&
-                        <TodayForecast 
-                            result={result ? result.current : undefined} />
+                        isSubmitted && result
+                        ? <TodayForecast result={result.current} />
+                        : isSubmitted && !result 
+                        ? renderNotFound()
+                        : null
                     }
-                    {
-                        city &&
-                        <CityPanel
-                            city={city ? city.text : undefined} />
+                </Grid>
+                <Grid item xs={12}>
+                    {   
+                        isSubmitted && city
+                        ? <CityPanel city={city.text} />
+                        : isSubmitted && !city 
+                        ? renderNotFound()
+                        : null
                     }
                 </Grid>
             </Grid>

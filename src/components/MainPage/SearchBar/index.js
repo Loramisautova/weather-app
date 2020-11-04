@@ -5,17 +5,19 @@ import { Autocomplete } from '@material-ui/lab';
 
 import "./index.css";
 
-// import { GEOCODE_API_KEY } from '../../consts.js';
+import { GEOCODE_API_KEY } from '../../../consts.js';
 
 export const SearchBar = (props) =>  {
     const [address, setAddress] = useState('');
     const [suggestions, setSuggestions] = useState([]);
 
-    const handleSubmit = () => {props.onSearch(address)};
+    const handleSubmit = () => {
+        props.onSearch(address)
+    };
 
     useEffect(() => {
         const getSuggestions = async () => {
-            const GEOCODE_API_KEY = "4bf4c660-0729-11eb-b357-a938736de318"
+
                 try {
                     const request = await fetch(`https://app.geocodeapi.io/api/v1/autocomplete?apikey=${GEOCODE_API_KEY}&text=${address}&size=10`);
                     const result = await request.json();
@@ -40,7 +42,7 @@ export const SearchBar = (props) =>  {
     }, [address]);
 
     const handleChange = (e) => {
-        setAddress(e.target.value);
+        setAddress(e.target.value)
     }
         
     const handleSuggestionChange = (e, value) => {

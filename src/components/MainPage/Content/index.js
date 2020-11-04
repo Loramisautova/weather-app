@@ -1,21 +1,18 @@
 import React from 'react';
-
 import { Box } from "@material-ui/core";
 
-import { WeatherForecast } from '../WeatherForecat';
+import { WeekForecast } from '../WeekForecat';
 
 export const Content = (props) => {
 
-    const { result } = props;
+    const { forecast } = props;
 
     return (
-        <Box display="flex" justifyContent="center" m={1} p={1}>
-            <Box p={1}>
+        <Box display="flex" justifyContent="center" p={1}>
             {
-                result &&
-                <WeatherForecast result={result ? result.daily : undefined} />
+                forecast &&
+                <WeekForecast forecast={forecast.daily} />
             }
-            </Box>
         </Box>
     );
 }
