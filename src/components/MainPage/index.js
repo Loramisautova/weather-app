@@ -42,13 +42,16 @@ export class MainPage extends React.PureComponent {
               this.setState({
                 result,
                 city: geoResult.geocoding.query, 
-                isSubmitted: true
               }); 
             } else {
               throw new Error('Not Found');
             }
         } catch (e) {
-          console.error(e);
+          this.setState({
+            isSubmitted: true,
+            city: '',
+            result: null,
+          });
         } 
     }
     
