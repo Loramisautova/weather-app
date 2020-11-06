@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {Typography, Box } from "@material-ui/core";
 
 import "./index.css";

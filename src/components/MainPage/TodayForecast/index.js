@@ -1,7 +1,5 @@
 import React from 'react';
-
 import {Typography, Box, Divider } from "@material-ui/core";
-
 import { format, fromUnixTime } from "date-fns";
 
 import "./index.css";
@@ -11,8 +9,7 @@ export const TodayForecast = (props) => {
 
     const resultDateStr = format(fromUnixTime(result.dt), "eeee, HH:mm");
     const weatherDescription = result.weather.map(i => i.description)
-    
-    if (result !== undefined) {
+
         return (<> 
                     <Box display = "flex" flexDirection = "column">
                         <Typography variant="h2" gutterBottom>
@@ -31,14 +28,5 @@ export const TodayForecast = (props) => {
                         </Typography>
                     </Box>
                 </>
-            );
-    } else {
-        return (
-            <Typography component="div">
-                    <Box fontWeight="fontWeightBold" m={1}>
-                        Not Found
-                    </Box>
-            </Typography>
         );
-    }
 }

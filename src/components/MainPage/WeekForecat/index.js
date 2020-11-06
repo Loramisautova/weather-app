@@ -1,8 +1,7 @@
 import React from 'react';
+import { Box } from "@material-ui/core";
 
 import { ForecastCard } from '../ForecastCard';
-
-import { Box } from "@material-ui/core";
 
 export const WeekForecast = (props) => {
 
@@ -11,7 +10,7 @@ export const WeekForecast = (props) => {
   const weekDays = forecast.slice(1);
 
   return (
-    <Box display = "flex" flexDirection = "row">
+    <Box display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
         {
           forecast &&
             weekDays.map((day) =>

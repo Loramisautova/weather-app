@@ -1,8 +1,6 @@
 import React from 'react';
-
-import { format, fromUnixTime } from "date-fns";
-
 import { Typography, Box } from "@material-ui/core";
+import { format, fromUnixTime } from "date-fns";
 
 export const ForecastCard = (props) => {
 

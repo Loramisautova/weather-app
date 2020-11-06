@@ -5,40 +5,26 @@ import { TodayForecast } from '../TodayForecast/index';
 import { CityPanel } from '../CityPanel/index';
 
 import "./index.css";
-
 import { Grid } from "@material-ui/core";
 
-export const SidePanel = ({onSearch, result, city, isSubmitted }) => {
-
-    console.log("isSubmitted",isSubmitted);
-    console.log("result",result);
-
-    const renderNotFound = () => <div> Not Found </div>
+export const SidePanel = ({onSearch, result, city }) => {
     
     return (
         <div className='side-panel'>
             <Grid container>
                 <Grid item xs={12}>
-                    <SearchBar
-                        onSearch={onSearch}
-                    />
+                    <SearchBar onSearch={onSearch} />
                 </Grid>
                 <Grid item xs={12}>
                     {
-                        isSubmitted && result
-                        ? <TodayForecast result={result.current} />
-                        : isSubmitted && !result 
-                        ? renderNotFound()
-                        : null
+                        result && 
+                        <TodayForecast result={result.current} />
                     }
                 </Grid>
                 <Grid item xs={12}>
                     {   
-                        isSubmitted && city
-                        ? <CityPanel city={city.text} />
-                        : isSubmitted && !city 
-                        ? renderNotFound()
-                        : null
+                        city && 
+                        <CityPanel city={city.text} />
                     }
                 </Grid>
             </Grid>

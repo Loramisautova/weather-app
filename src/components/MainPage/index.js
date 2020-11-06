@@ -1,12 +1,10 @@
 import React from 'react'
-
 import { Grid } from "@material-ui/core";
+import "fontsource-roboto";
 
 import { SidePanel } from './SidePanel';
 import { Content } from './Content';
-// import { WeatherForecast } from '../WeatherForecat/index';
-
-import "fontsource-roboto";
+import { NotFound } from './NotFound';
 
 import { GEOCODE_API_KEY } from '../../consts.js';
 
@@ -14,11 +12,9 @@ export class MainPage extends React.PureComponent {
     state = {
         address: '',
         result: undefined,
-        isSubmitted: false,
         city: undefined,
+        error: false, 
     }
-
-    renderNotFound = () => <div> Not Found </div>
 
     handleSearchCity = async (address) => {
         // this.setState({ result: data });
@@ -42,13 +38,14 @@ export class MainPage extends React.PureComponent {
               this.setState({
                 result,
                 city: geoResult.geocoding.query, 
+                error: false,
               }); 
             } else {
               throw new Error('Not Found');
             }
         } catch (e) {
           this.setState({
-            isSubmitted: true,
+            error: true,
             city: '',
             result: null,
           });
@@ -57,7 +54,7 @@ export class MainPage extends React.PureComponent {
     
 
     render() {
-      const { result, city, isSubmitted } = this.state;
+      const { result, city, error } = this.state;
       
         return (
             <div className='visibility-panel'>
@@ -67,7 +64,7 @@ export class MainPage extends React.PureComponent {
                     result={result}
                     city={city}
                     onSearch={this.handleSearchCity}
-                    isSubmitted={isSubmitted}
+                    // isSubmitted={isSubmitted}
                   />
                 </Grid>
                 <Grid item xs={9}>
@@ -79,6 +76,10 @@ export class MainPage extends React.PureComponent {
                     result &&
                     <WeatherForecat result={result ? result.daily : undefined} />
                   } */}
+                  {
+                    error && 
+                    <NotFound />
+                  }
                 </Grid>
             </div>
         )
