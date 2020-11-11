@@ -57,31 +57,29 @@ export class MainPage extends React.PureComponent {
       const { result, city, error } = this.state;
       
         return (
-            <div className='visibility-panel'>
-              <Grid container>
-                <Grid item xs={3}>
-                  <SidePanel
-                    result={result}
-                    city={city}
-                    onSearch={this.handleSearchCity}
-                    // isSubmitted={isSubmitted}
-                  />
-                </Grid>
-                <Grid item xs={9}>
-                  <Content 
-                    forecast={result}
-                  />
-                </Grid>
-                  {/* {
-                    result &&
-                    <WeatherForecat result={result ? result.daily : undefined} />
-                  } */}
-                  {
-                    error && 
-                    <NotFound />
-                  }
-                </Grid>
-            </div>
-        )
+          <Grid container>
+            <Grid item xs={3}>
+              <SidePanel
+                result={result}
+                city={city}
+                onSearch={this.handleSearchCity}
+                // isSubmitted={isSubmitted}
+              />
+            </Grid>
+            <Grid item xs={9}>
+              <Content 
+                forecast={result}
+              />
+            </Grid>
+            {/* {
+              result &&
+              <WeatherForecat result={result ? result.daily : undefined} />
+            } */}
+            {
+              error && 
+              <NotFound />
+            }
+          </Grid>
+        );
     }
 }

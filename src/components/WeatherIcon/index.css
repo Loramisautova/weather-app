@@ -1,0 +1,11 @@
+.weather-icon__icon_sm {
+    width: 40px;
+}
+
+.weather-icon__icon_md {
+    width: 80px;
+}
+
+.weather-icon__icon_lg {
+    width: 120px;
+}
