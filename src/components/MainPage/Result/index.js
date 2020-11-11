@@ -1,8 +1,5 @@
 import React from 'react';
-
 import { Grid } from "@material-ui/core";
-
-import "./index.css";
 
 export const Result = (props) => {
     const { result } = props;
@@ -31,10 +28,8 @@ export const Result = (props) => {
     }
 
     return (
-        <div className='visibility-panel'>
-            <Grid container justify='space-between'>
-                {Boolean(result) && renderContent(result)}
-            </Grid>
-        </div>
+        <Grid container justify='space-between'>
+            {Boolean(result) && renderContent(result)}
+        </Grid>
     );
 }

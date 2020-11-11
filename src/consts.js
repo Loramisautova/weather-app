@@ -1,1 +1,7 @@
-export const data = {"coord":{"lon":49.89,"lat":40.38},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"stations","main":{"temp":14,"feels_like":11.57,"temp_min":14,"temp_max":14,"pressure":1029,"humidity":71},"visibility":10000,"wind":{"speed":3.1,"deg":40},"clouds":{"all":62},"dt":1603290484,"sys":{"type":1,"id":8841,"country":"AZ","sunrise":1603249065,"sunset":1603288319},"timezone":14400,"id":587084,"name":"Baku","cod":200}
+export const GEOCODE_API_KEY = "4bf4c660-0729-11eb-b357-a938736de318";
+
+export const SIZES = {
+    SM: 'sm',
+    MD: 'md',
+    LG: 'lg'
+};

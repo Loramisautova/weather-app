@@ -1,57 +1,84 @@
 import React from 'react'
-
 import { Grid } from "@material-ui/core";
 
-import { SearchBar } from './SearchBar/index';
-import { Result } from './Result/index';
-import { WeatherMap } from './WeatherMap/index';
+import { GEOCODE_API_KEY } from '../../consts';
 
-import { data } from '../../consts'
+import { SidePanel } from './SidePanel';
+import { Content } from './Content';
+import { NotFound } from './NotFound';
+
+import "fontsource-roboto";
 
 export class MainPage extends React.PureComponent {
     state = {
         address: '',
-        result: undefined 
+        result: undefined,
+        city: undefined,
+        error: false, 
     }
 
     handleSearchCity = async (address) => {
-        this.setState({ result: data });
-      // const API_KEY = '7fa5f0fb6c1c76373c9c715e63ef8768';
-      //   }) {
-      //     try {
-      //       const request = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${API_KEY}&units=metric`);
-      //       const result = await request.json();
-      //       console.log(result)
+        // this.setState({ result: data });
+        // }) 
+        const API_KEY = "d5059caf979c114dc0d46bf2dd1b4aa3"
+      
+          try {
+            const geoRequest = await fetch(`https://app.geocodeapi.io/api/v1/search?text=${address}&apikey=${GEOCODE_API_KEY}&size=1`);
+            const geoResult = await geoRequest.json();
+
+            console.log(geoResult)
+
+            if (geoResult && geoResult.features && geoResult.features.length > 0 && geoResult.features[0].geometry) {
+              const [lon, lat] = geoResult.features[0].geometry.coordinates;
+              
+              const request = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude={part}&appid=${API_KEY}`)
+              const result = await request.json();
+              
+              console.log(result)
   
-      //       this.setState({
-      //         result
-      //       });
-      //   } catch (e) {
-      //     console.error(e);
-      //   }
-      // }
+              this.setState({
+                result,
+                city: geoResult.geocoding.query, 
+                error: false,
+              }); 
+            } else {
+              throw new Error('Not Found');
+            }
+        } catch (e) {
+          this.setState({
+            error: true,
+            city: '',
+            result: null,
+          });
+        } 
     }
+    
 
     render() {
-      const { result } = this.state;
+      const { result, city, error } = this.state;
       
         return (
-            <div className='visibility-panel'>
-              <Grid container justify="center">
-                <Grid item xs={6}>
-                  <SearchBar
-                    onSearch={this.handleSearchCity}
-                  />
-                  <Result 
-                    result={result}
-                  />
-                  {
-                    result &&
-                    <WeatherMap coord={result.coord}/>
-                  }
-                </Grid>
-              </Grid>
-            </div>
-        )
+          <Grid container>
+            <Grid item xs={3}>
+              <SidePanel
+                result={result}
+                city={city}
+                onSearch={this.handleSearchCity}
+                // isSubmitted={isSubmitted}
+              />
+            </Grid>
+            <Grid item xs={9}>
+              <Content forecast={result} />
+            </Grid>
+            {/* {
+              result &&
+              <WeatherForecat result={result ? result.daily : undefined} />
+            } */}
+            {
+              error && 
+              <NotFound />
+            }
+          </Grid>
+        );
     }
 }
