@@ -1,12 +1,13 @@
 import React from 'react'
 import { Grid } from "@material-ui/core";
-import "fontsource-roboto";
+
+import { GEOCODE_API_KEY } from '../../consts';
 
 import { SidePanel } from './SidePanel';
 import { Content } from './Content';
 import { NotFound } from './NotFound';
 
-import { GEOCODE_API_KEY } from '../../consts.js';
+import "fontsource-roboto";
 
 export class MainPage extends React.PureComponent {
     state = {
@@ -67,9 +68,7 @@ export class MainPage extends React.PureComponent {
               />
             </Grid>
             <Grid item xs={9}>
-              <Content 
-                forecast={result}
-              />
+              <Content forecast={result} />
             </Grid>
             {/* {
               result &&

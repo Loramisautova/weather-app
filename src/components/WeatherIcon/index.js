@@ -10,7 +10,7 @@ export const WeatherIcon = (props) => {
 
     return (
         <>
-            <img className={`weather-icon__icon_${size}`} src={iconImage} />
+            <img className={`weather-icon__icon_${size}`} src={iconImage} alt='' />
         </>
     );
 }
