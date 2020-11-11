@@ -10,7 +10,6 @@ import { Grid } from "@material-ui/core";
 export const SidePanel = ({onSearch, result, city }) => {
     
     return (
-        <div className='side-panel'>
             <Grid container>
                 <Grid item xs={12}>
                     <SearchBar onSearch={onSearch} />
@@ -28,6 +27,5 @@ export const SidePanel = ({onSearch, result, city }) => {
                     }
                 </Grid>
             </Grid>
-        </div>
     );
 }

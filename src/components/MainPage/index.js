@@ -30,7 +30,7 @@ export class MainPage extends React.PureComponent {
             if (geoResult && geoResult.features && geoResult.features.length > 0 && geoResult.features[0].geometry) {
               const [lon, lat] = geoResult.features[0].geometry.coordinates;
               
-              const request = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${API_KEY}`)
+              const request = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude={part}&appid=${API_KEY}`)
               const result = await request.json();
               
               console.log(result)
