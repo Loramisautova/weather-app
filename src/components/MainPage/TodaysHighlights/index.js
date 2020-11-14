@@ -7,7 +7,7 @@ export const TodaysHighlights = (props) => {
     const { highlights } = props;
     
     return (
-        <Box display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
+        <Box className= "" display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
             <HighlightsCard 
                 highlights={highlights}
             />

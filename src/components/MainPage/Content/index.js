@@ -12,8 +12,8 @@ export const Content = (props) => {
     return (
         forecast 
         ? (
-            <Box className="content" p={2}>
-                <Grid direction="column" justify="center" spacing={3} container>
+            <Box className="content" p={2   }>
+                <Grid direction="column" justify="center" spacing={1} container>
                     <Grid  xs={12} item>
                         <WeekForecast forecast={forecast.daily} />  
                     </Grid>

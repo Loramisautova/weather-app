@@ -1,0 +1,9 @@
+.highlight-card {
+    background-color: white;
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    width: 260px;
+    height: 50%;
+}
