@@ -6,12 +6,13 @@ import "./index.css";
 export const CityPanel = (props) => {
     const { city } = props;
 
-    return (<> 
+    return (
+        <Box>
             <Typography className="city-title" component="div" variant="h2" gutterBottom>
                 <Box textAlign="center" fontWeight="fontWeightBold" m={1}>
                     {city}
                 </Box>
             </Typography>
-        </>
+        </Box>
     );   
 }

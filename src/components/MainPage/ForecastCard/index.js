@@ -8,7 +8,8 @@ import { SIZES } from '../../../consts';
 import './index.css';
 
 export const ForecastCard = (props) => {
-    const { day } = props;const date = format(fromUnixTime(day.dt), "eee");
+    const { day } = props;
+    const date = format(fromUnixTime(day.dt), "eee");
     const icon = Array.isArray(day.weather) && Boolean(day.weather.length) && day.weather[0].icon;
 
     return (
