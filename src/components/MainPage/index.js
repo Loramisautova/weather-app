@@ -15,6 +15,7 @@ export class MainPage extends React.PureComponent {
         result: undefined,
         city: undefined,
         error: false, 
+        fahreingheit: false,
     }
 
     handleSearchCity = async (address) => {
@@ -31,7 +32,7 @@ export class MainPage extends React.PureComponent {
             if (geoResult && geoResult.features && geoResult.features.length > 0 && geoResult.features[0].geometry) {
               const [lon, lat] = geoResult.features[0].geometry.coordinates;
               
-              const request = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude={part}&appid=${API_KEY}`)
+              const request = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${API_KEY}`)
               const result = await request.json();
               
               console.log(result)
@@ -53,9 +54,12 @@ export class MainPage extends React.PureComponent {
         } 
     }
     
+    handleChange = (event) => {
+      this.setState({ fahreingheit : event.target.checked });
+    };
 
     render() {
-      const { result, city, error } = this.state;
+      const { result, city, error, fahreingheit } = this.state;
       
         return (
           <Grid container>
@@ -64,11 +68,16 @@ export class MainPage extends React.PureComponent {
                 result={result}
                 city={city}
                 onSearch={this.handleSearchCity}
+                checked={fahreingheit}
                 // isSubmitted={isSubmitted}
               />
             </Grid>
             <Grid item xs={9}>
-              <Content forecast={result} />
+              <Content 
+                forecast={result}
+                checked={fahreingheit}
+                onChange={this.handleChange}
+              />
             </Grid>
             {/* {
               result &&

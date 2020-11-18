@@ -1,3 +1,8 @@
 .forecast-card {
     background-color: white;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    height: 100px;
 }

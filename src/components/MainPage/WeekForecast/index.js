@@ -3,10 +3,7 @@ import { Box } from "@material-ui/core";
 
 import { ForecastCard } from '../ForecastCard';
 
-export const WeekForecast = (props) => {
-
-  const { forecast } = props;
-
+export const WeekForecast = ({ forecast, fahreingheit }) => {
   const weekDays = forecast.slice(1);
 
   return (
@@ -17,6 +14,7 @@ export const WeekForecast = (props) => {
                 <ForecastCard
                     key={day.dt}
                     day={day}
+                    fahreingheit={fahreingheit}
                 />
             )
         }

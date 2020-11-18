@@ -1,21 +1,23 @@
 import React from 'react';
 import { Box, Grid } from "@material-ui/core";
 
-import { WeekForecast } from '../WeekForecat';
+import { WeekForecast } from '../WeekForecast';
 import { TodaysHighlights } from '../TodaysHighlights';
+import { UnitSwitcher } from '../UnitSwitcher'
 
 import './index.css'
 
-export const Content = (props) => {
-    const { forecast } = props;
-
+export const Content = ({forecast, checked, onChange }) => {
     return (
         forecast 
         ? (
             <Box className="content" p={2}>
-                <Grid direction="column" justify="center" spacing={3} container>
+                <Grid direction="column" justify="center" spacing={1} container>
                     <Grid  xs={12} item>
-                        <WeekForecast forecast={forecast.daily} />  
+                        <UnitSwitcher fahreingheit={checked} onChange={onChange} />
+                    </Grid>
+                    <Grid  xs={12} item>
+                        <WeekForecast fahreingheit={checked} forecast={forecast.daily} /> 
                     </Grid>
                     <Grid item xs={12}>
                         <TodaysHighlights highlights={forecast.current}/>
