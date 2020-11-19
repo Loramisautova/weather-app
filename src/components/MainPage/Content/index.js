@@ -7,7 +7,7 @@ import { UnitSwitcher } from '../UnitSwitcher'
 
 import './index.css'
 
-export const Content = ({ forecast, fahreingheit, onChange }) => {
+export const Content = ({ forecast, checked, onChange }) => {
     return (
         forecast 
         ? (
@@ -17,7 +17,7 @@ export const Content = ({ forecast, fahreingheit, onChange }) => {
                         <UnitSwitcher fahreingheit={checked} onChange={onChange} />
                     </Grid>
                     <Grid  xs={12} item>
-                        <WeekForecast fahreingheit={fahreingheit} forecast={forecast.daily} /> 
+                        <WeekForecast fahreingheit={checked} forecast={forecast.daily} /> 
                     </Grid>
                     <Grid item xs={12}>
                         <TodaysHighlights highlights={forecast.current}/>

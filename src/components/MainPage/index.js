@@ -67,7 +67,7 @@ export class MainPage extends React.PureComponent {
               <SidePanel
                 result={result}
                 city={city}
-                fahreingheit={fahreingheit}
+                checked={fahreingheit}
                 onSearch={this.handleSearchCity}
                 // isSubmitted={isSubmitted}
               />
@@ -75,7 +75,7 @@ export class MainPage extends React.PureComponent {
             <Grid item xs={9}>
               <Content 
                 forecast={result}
-                fahreingheit={fahreingheit}
+                checked={fahreingheit}
                 onChange={this.handleChange}
               />
             </Grid>
