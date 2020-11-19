@@ -8,16 +8,16 @@ export const WeekForecast = ({ forecast, fahreingheit }) => {
 
   return (
     <Box display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
-        {
-          forecast &&
-            weekDays.map((day) =>
-                <ForecastCard
-                    key={day.dt}
-                    day={day}
-                    fahreingheit={fahreingheit}
-                />
-            )
-        }
+      {
+        forecast &&
+          weekDays.map((day) =>
+            <ForecastCard
+              key={day.dt}
+              day={day}
+              fahreingheit={fahreingheit}
+          />
+        )
+      }
     </Box>
   );
 }

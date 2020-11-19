@@ -5,7 +5,7 @@ import { SearchBar } from '../SearchBar/index';
 import { TodayForecast } from '../TodayForecast/index';
 import { CityPanel } from '../CityPanel/index';
 
-export const SidePanel = ({ onSearch, result, city, checked }) => {
+export const SidePanel = ({ onSearch, result, city, fahreingheit }) => {
     return (
         <Box p={2}>
             <Grid container>
@@ -15,7 +15,7 @@ export const SidePanel = ({ onSearch, result, city, checked }) => {
                 <Grid item xs={12}>
                     {
                         result && 
-                        <TodayForecast result={result.current} fahreingheit={checked} />
+                        <TodayForecast result={result.current} fahreingheit={fahreingheit} />
                     }
                 </Grid>
                 <Grid item xs={12}>
