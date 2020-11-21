@@ -5,15 +5,21 @@ import { format, fromUnixTime } from "date-fns";
 import { WeatherIcon } from '../../WeatherIcon';
 import { SIZES } from '../../../consts';
 
+import { Temp } from '../Temp';
+
 import "./index.css";
 
 export const TodayForecast = (props) => {
-    const { result } = props;
+    const { result, fahreingheit } = props;
 
     const resultDateStr = format(fromUnixTime(result.dt), "eeee, HH:mm");
-    const weatherDescription = result.weather.map(i => i.description);
-    const icon = result.weather && Boolean(result.weather.length) && result.weather[0].icon;
-
+    let weatherDescription;
+    let icon;
+    if (result.weather && Boolean(result.weather.length)) {
+        weatherDescription = result.weather.map(i => i.description);
+        icon = result.weather[0].icon;
+    }
+    
     return (
         <> 
             <Box display = "flex" flexDirection = "column">
@@ -24,8 +30,8 @@ export const TodayForecast = (props) => {
                     }
                 </Box>
                 <Box item mt={1}>
-                    <Typography variant="h2" gutterBottom>
-                        {Math.round(result.temp)}&deg;
+                    <Typography variant="h2" display="inline" gutterBottom>
+                        <Temp value={result.temp} fahreingheit={fahreingheit} />
                     </Typography>
                 </Box>
                 <Box item>

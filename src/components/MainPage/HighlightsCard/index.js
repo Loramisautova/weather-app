@@ -6,16 +6,14 @@ import "./index.css";
 
 export const HighlightsCard = ({highlights}) => {
     const {
-        // sunset, 
-        // sunrise, 
         humidity,
         uvi,
         wind_speed,
         visibility,
     } = highlights;
 
-    const sunsetStr = format(fromUnixTime(highlights.sunset), "HH:mm");
-    const sunriseStr = format(fromUnixTime(highlights.sunrise), "HH:mm");
+    const sunset = format(fromUnixTime(highlights.sunset), "HH:mm");
+    const sunrise = format(fromUnixTime(highlights.sunrise), "HH:mm");
 
     return (
         <Box component="div" display = "flex" flexDirection = "column">
@@ -26,7 +24,7 @@ export const HighlightsCard = ({highlights}) => {
                     </Typography>
                     <Typography component="div">
                         <Box fontWeight="fontWeightBold" m={1}>
-                            {sunriseStr} AM
+                            {sunrise} AM
                         </Box>
                     </Typography>
                 </Box>
@@ -58,7 +56,7 @@ export const HighlightsCard = ({highlights}) => {
                     </Typography>
                     <Typography component="div">
                         <Box fontWeight="fontWeightBold" m={1}>
-                            {sunsetStr} PM 
+                            {sunset} PM 
                         </Box>
                     </Typography>
                 </Box>
