@@ -4,5 +4,10 @@
     justify-content: center;
     align-items: center;
     border-radius: 30px;
-    height: 100px;
+    height: 100px
+}
+
+.border {
+    border-color: rgba(0, 153, 255, 0.987);
+    border-style: solid;
 }

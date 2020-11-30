@@ -9,12 +9,14 @@ import { Temp } from '../Temp';
 
 import './index.css';
 
-export const ForecastCard = ({ day, fahreingheit }) => {
+export const ForecastCard = (props) => {
+    const { day, fahreingheit, isSelected, selectedDay } = props;
     const date = format(fromUnixTime(day.dt), "eee");
     const icon = Array.isArray(day.weather) && Boolean(day.weather.length) && day.weather[0].icon;
+    const highlightCard = isSelected ? 'border' : '';
 
     return (
-        <Box className="forecast-card" display = "flex" flexDirection = "column">
+        <Box className={`forecast-card ${highlightCard}`} display = "flex" flexDirection = "column" onClick={selectedDay}>
             <Typography component="div">
                 <Box fontWeight="fontWeightBold" m={1}>
                     {date}

@@ -3,7 +3,8 @@ import { Box } from "@material-ui/core";
 
 import { ForecastCard } from '../ForecastCard';
 
-export const WeekForecast = ({ forecast, fahreingheit }) => {
+export const WeekForecast = (props) => {
+  const { forecast, fahreingheit, selectedId } = props;
   const weekDays = forecast.slice(1);
 
   return (
@@ -15,10 +16,11 @@ export const WeekForecast = ({ forecast, fahreingheit }) => {
               key={day.dt}
               day={day}
               fahreingheit={fahreingheit}
+              isSelected={selectedId === day.dt}
+              selectedDay={() => props.selectedDay(day)}
           />
         )
       }
     </Box>
   );
 }
-

@@ -9,7 +9,6 @@ export const HighlightsCard = ({highlights}) => {
         humidity,
         uvi,
         wind_speed,
-        visibility,
     } = highlights;
 
     const sunset = format(fromUnixTime(highlights.sunset), "HH:mm");
@@ -66,7 +65,7 @@ export const HighlightsCard = ({highlights}) => {
                     </Typography>
                     <Typography component="div">
                         <Box fontWeight="fontWeightBold" m={1}>
-                            {visibility/1000} km
+                            TBD
                         </Box>
                     </Typography>
                 </Box>
