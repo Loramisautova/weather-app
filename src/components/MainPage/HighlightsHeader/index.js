@@ -6,7 +6,7 @@ export const HighlightsHeader = ({ highlights }) => {
     const date = format(fromUnixTime(highlights.dt), "d MMM");
 
     return (
-        <Box className= "" display = "flex" flexDirection = "row" ml={5}>
+        <Box display = "flex" flexDirection = "row" ml={5}>
             <Typography component="div">
                 <Box fontWeight="fontWeightBold">
                     Highlights, {date}

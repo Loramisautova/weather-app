@@ -10,26 +10,17 @@ import { HighlightsHeader } from '../HighlightsHeader';
 import './index.css'
 
 export const Content = ({ forecast, checked, onChange }) => {
-    const [selectedDay, setSelectedDay] = useState('');
-    const [selectedIndex, setSelectedIndex] = useState('0')
-
-    const handleSelectedDay = (day) => {
-        setSelectedDay(day)
-        handleSelectedIndex(day)
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    
+    const handleSelectedDay = (index) => {
+        setSelectedIndex(index)
+        console.log(index)
     };
 
-    console.log(selectedDay);
-
-    const handleSelectedIndex = (selectedDay) => {
-        let index
-        if (forecast && forecast.daily) {
-            index = forecast.daily.findIndex(i => i.dt === selectedDay.dt);
-            setSelectedIndex(index !== -1 ? index : 0)
-            console.log(index)
-        };
-    } 
-
-    console.log(selectedIndex);
+    let weekDay;
+    if (forecast && forecast.daily) {
+        weekDay = forecast.daily[selectedIndex];
+    };
 
     return (
         forecast 
@@ -40,13 +31,13 @@ export const Content = ({ forecast, checked, onChange }) => {
                         <UnitSwitcher fahreingheit={checked} onChange={onChange} />
                     </Grid>
                     <Grid  xs={12} item>
-                        <WeekForecast fahreingheit={checked} forecast={forecast.daily} selectedId={selectedDay.dt} selectedDay={handleSelectedDay} /> 
+                        <WeekForecast fahreingheit={checked} forecast={forecast.daily} selectedIndex={selectedIndex} onSelect={handleSelectedDay} /> 
                     </Grid>
                     <Grid item xs={12}>
-                        <HighlightsHeader highlights={forecast.daily[selectedIndex]} />
+                        <HighlightsHeader highlights={weekDay} />
                     </Grid>
                     <Grid item xs={12}>
-                        <TodaysHighlights highlights={forecast.daily[selectedIndex]} />
+                        <TodaysHighlights highlights={weekDay} />
                     </Grid>
                 </Grid>
             </Box>

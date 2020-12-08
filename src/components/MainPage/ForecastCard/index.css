@@ -7,7 +7,7 @@
     height: 100px
 }
 
-.border {
+.active {
     border-color: rgba(0, 153, 255, 0.987);
     border-style: solid;
 }

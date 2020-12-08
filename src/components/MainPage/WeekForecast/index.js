@@ -4,20 +4,19 @@ import { Box } from "@material-ui/core";
 import { ForecastCard } from '../ForecastCard';
 
 export const WeekForecast = (props) => {
-  const { forecast, fahreingheit, selectedId } = props;
-  const weekDays = forecast.slice(1);
+  const { forecast, fahreingheit, selectedIndex } = props;
 
   return (
     <Box display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
       {
         forecast &&
-          weekDays.map((day) =>
+          forecast.map((day, index) =>
             <ForecastCard
-              key={day.dt}
               day={day}
+              key={day.dt}
               fahreingheit={fahreingheit}
-              isSelected={selectedId === day.dt}
-              selectedDay={() => props.selectedDay(day)}
+              selectedIndex={selectedIndex === index}
+              onSelect={() => props.onSelect(index)}
           />
         )
       }

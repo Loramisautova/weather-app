@@ -4,11 +4,12 @@ import { format, fromUnixTime } from "date-fns";
 
 import "./index.css";
 
-export const HighlightsCard = ({highlights}) => {
+export const HighlightsCard = ({ highlights }) => {
     const {
         humidity,
         uvi,
         wind_speed,
+        pressure,
     } = highlights;
 
     const sunset = format(fromUnixTime(highlights.sunset), "HH:mm");
@@ -61,11 +62,11 @@ export const HighlightsCard = ({highlights}) => {
                 </Box>
                 <Box className= "highlight-card" display = "flex" flexDirection = "column" m={1}>
                     <Typography gutterBottom variant="subtitle1" color="textSecondary">
-                            Visibility
+                        Pressure
                     </Typography>
                     <Typography component="div">
                         <Box fontWeight="fontWeightBold" m={1}>
-                            TBD
+                            {pressure} hPa
                         </Box>
                     </Typography>
                 </Box>

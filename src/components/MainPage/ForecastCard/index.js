@@ -10,13 +10,13 @@ import { Temp } from '../Temp';
 import './index.css';
 
 export const ForecastCard = (props) => {
-    const { day, fahreingheit, isSelected, selectedDay } = props;
+    const { day, fahreingheit, selectedIndex, onSelect } = props;
     const date = format(fromUnixTime(day.dt), "eee");
     const icon = Array.isArray(day.weather) && Boolean(day.weather.length) && day.weather[0].icon;
-    const highlightCard = isSelected ? 'border' : '';
+    const highlightCard = selectedIndex ? 'active' : '';
 
     return (
-        <Box className={`forecast-card ${highlightCard}`} display = "flex" flexDirection = "column" onClick={selectedDay}>
+        <Box className={`forecast-card ${highlightCard}`} display = "flex" flexDirection = "column" onClick={onSelect}>
             <Typography component="div">
                 <Box fontWeight="fontWeightBold" m={1}>
                     {date}
