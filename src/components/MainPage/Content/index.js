@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useEffect, useMemo, useState} from 'react';
 import { Box, Grid } from "@material-ui/core";
 
 import { WeekForecast } from '../WeekForecast';
@@ -10,38 +10,45 @@ import { HighlightsHeader } from '../HighlightsHeader';
 import './index.css'
 
 export const Content = ({ forecast, checked, onChange }) => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    
-    const handleSelectedDay = (index) => {
-        setSelectedIndex(index)
-        console.log(index)
-    };
+    const [selectedDay, setSelectedDay] = useState();
+    const [forecastData, setForecastData] = useState();
 
-    let weekDay;
-    if (forecast && forecast.daily) {
-        weekDay = forecast.daily[selectedIndex];
+    useEffect(
+        () => {
+            if (forecast && Array.isArray(forecast.daily)) {
+                const data = forecast.daily.slice(1);
+
+                setForecastData(data);
+                setSelectedDay(data[0]);
+            }
+        },
+        [forecast],
+    );
+
+    const handleSelectedDay = (day) => {
+        setSelectedDay(day);
     };
 
     return (
-        forecast 
-        ? (
-            <Box className="content" p={2}>
-                <Grid direction="column" justify="center" spacing={1} container>
-                    <Grid  xs={12} item>
-                        <UnitSwitcher fahreingheit={checked} onChange={onChange} />
+        forecastData 
+            ? (
+                <Box className="content" p={2}>
+                    <Grid direction="column" justify="center" spacing={1} container>
+                        <Grid  xs={12} item>
+                            <UnitSwitcher fahreingheit={checked} onChange={onChange} />
+                        </Grid>
+                        <Grid  xs={12} item>
+                            <WeekForecast fahreingheit={checked} forecast={forecastData} selectedDay={selectedDay} onSelect={handleSelectedDay} /> 
+                        </Grid>
+                        <Grid item xs={12}>
+                            <HighlightsHeader highlights={selectedDay} />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TodaysHighlights highlights={selectedDay} />
+                        </Grid>
                     </Grid>
-                    <Grid  xs={12} item>
-                        <WeekForecast fahreingheit={checked} forecast={forecast.daily} selectedIndex={selectedIndex} onSelect={handleSelectedDay} /> 
-                    </Grid>
-                    <Grid item xs={12}>
-                        <HighlightsHeader highlights={weekDay} />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TodaysHighlights highlights={weekDay} />
-                    </Grid>
-                </Grid>
-            </Box>
-        )
-        : null
+                </Box>
+            )
+            : null
     );
 }
