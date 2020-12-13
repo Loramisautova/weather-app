@@ -18,7 +18,7 @@ export const ForecastCard = (props) => {
     return (
         <Box className={`forecast-card ${highlightCard}`} display = "flex" flexDirection = "column" onClick={onSelect}>
             <Typography component="div">
-                <Box fontWeight="fontWeightBold" m={1}>
+                <Box fontWeight="fontWeightBold">
                     {date}
                 </Box>
             </Typography>

@@ -5,11 +5,9 @@ import {HighlightsCard} from '../HighlightsCard';
 
 export const TodaysHighlights = ({ highlights }) => {    
     return (
-        <Box className= "" display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
-            <HighlightsCard 
-                highlights={highlights}
-            />
-        </Box>
+        <HighlightsCard 
+            highlights={highlights}
+        />
     );
 }
 

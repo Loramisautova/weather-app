@@ -22,7 +22,7 @@ export const TodayForecast = (props) => {
     
     return (
         <> 
-            <Box display = "flex" flexDirection = "column">
+            <Box className="today-forecast" display = "flex" flexDirection = "column">
                 <Box item mt={2}>
                     {
                     icon &&

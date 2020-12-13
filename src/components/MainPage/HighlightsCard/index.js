@@ -17,7 +17,7 @@ export const HighlightsCard = ({ highlights }) => {
 
     return (
         <Box component="div" display = "flex" flexDirection = "column">
-            <Box component="div" display = "flex" flexDirection = "row" xs={12}>
+            <Box className="highlight-card-row" item display = "flex" flexDirection = "row" xs={12}>
                 <Box className= "highlight-card" display = "flex" flexDirection = "column" m={1}>
                     <Typography gutterBottom variant="subtitle1" color="textSecondary">
                             Sunrise
@@ -49,7 +49,7 @@ export const HighlightsCard = ({ highlights }) => {
                     </Typography>
                 </Box>
             </Box>
-            <Box component="div" display = "flex" flexDirection = "row" xs={12}>
+            <Box className="highlight-car-row" item display = "flex" flexDirection = "row" xs={12}>
                 <Box className= "highlight-card" display = "flex" flexDirection = "column" m={1}>
                     <Typography gutterBottom variant="subtitle1" color="textSecondary">
                             Sunset

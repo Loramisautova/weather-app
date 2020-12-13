@@ -7,6 +7,8 @@ import { SidePanel } from './SidePanel';
 import { Content } from './Content';
 import { NotFound } from './NotFound';
 
+import "./index.css";
+
 import "fontsource-roboto";
 
 export class MainPage extends React.PureComponent {
@@ -63,7 +65,7 @@ export class MainPage extends React.PureComponent {
       
         return (
           <Grid container>
-            <Grid item xs={3}>
+            <Grid className="main-page" item xs={3}>
               <SidePanel
                 result={result}
                 city={city}

@@ -7,7 +7,7 @@ export const WeekForecast = (props) => {
   const { forecast, fahreingheit, selectedIndex } = props;
 
   return (
-    <Box display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
+    <Box display = "flex" flexDirection = "row" justifyContent="space-between">
       {
         forecast &&
           forecast.map((day, index) =>
