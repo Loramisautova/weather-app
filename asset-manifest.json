@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/weather-app/static/css/main.e86d2084.chunk.css",
+    "main.js": "/weather-app/static/js/main.5d60b1c0.chunk.js",
+    "main.js.map": "/weather-app/static/js/main.5d60b1c0.chunk.js.map",
+    "runtime-main.js": "/weather-app/static/js/runtime-main.ebee7970.js",
+    "runtime-main.js.map": "/weather-app/static/js/runtime-main.ebee7970.js.map",
+    "static/css/2.7a101ad9.chunk.css": "/weather-app/static/css/2.7a101ad9.chunk.css",
+    "static/js/2.3f9e9cac.chunk.js": "/weather-app/static/js/2.3f9e9cac.chunk.js",
+    "static/js/2.3f9e9cac.chunk.js.map": "/weather-app/static/js/2.3f9e9cac.chunk.js.map",
+    "index.html": "/weather-app/index.html",
+    "static/css/2.7a101ad9.chunk.css.map": "/weather-app/static/css/2.7a101ad9.chunk.css.map",
+    "static/css/main.e86d2084.chunk.css.map": "/weather-app/static/css/main.e86d2084.chunk.css.map",
+    "static/js/2.3f9e9cac.chunk.js.LICENSE.txt": "/weather-app/static/js/2.3f9e9cac.chunk.js.LICENSE.txt",
+    "static/media/clear-sky.0b43f5c9.png": "/weather-app/static/media/clear-sky.0b43f5c9.png",
+    "static/media/clouds.e1ed92b6.png": "/weather-app/static/media/clouds.e1ed92b6.png",
+    "static/media/few-clouds-day.a6d0b7d8.png": "/weather-app/static/media/few-clouds-day.a6d0b7d8.png",
+    "static/media/few-clouds-night.6170354c.png": "/weather-app/static/media/few-clouds-night.6170354c.png",
+    "static/media/mist.662892ee.png": "/weather-app/static/media/mist.662892ee.png",
+    "static/media/rain.cfc1c8dd.png": "/weather-app/static/media/rain.cfc1c8dd.png",
+    "static/media/index.css": "/weather-app/static/media/roboto-vietnamese-400-normal.52cebac0.woff2",
+    "static/media/shower-rain.4d3277f3.png": "/weather-app/static/media/shower-rain.4d3277f3.png",
+    "static/media/snow-day.98ac7ea7.png": "/weather-app/static/media/snow-day.98ac7ea7.png",
+    "static/media/snow-night.eedd70b1.png": "/weather-app/static/media/snow-night.eedd70b1.png",
+    "static/media/thunderstorm-day.cc27487c.png": "/weather-app/static/media/thunderstorm-day.cc27487c.png",
+    "static/media/thunderstorm-night.4f081232.png": "/weather-app/static/media/thunderstorm-night.4f081232.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ebee7970.js",
+    "static/css/2.7a101ad9.chunk.css",
+    "static/js/2.3f9e9cac.chunk.js",
+    "static/css/main.e86d2084.chunk.css",
+    "static/js/main.5d60b1c0.chunk.js"
+  ]
+}
