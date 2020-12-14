@@ -21,35 +21,35 @@ export const TodayForecast = (props) => {
     }
     
     return (
-        <> 
-            <Box display = "flex" flexDirection = "column">
+            <>
+            <Box className="today-forecast" display = "flex" flexDirection = "column" alignItems="center" justifyContent="center">
                 <Box item mt={2}>
                     {
                     icon &&
                     <WeatherIcon icon={icon} size={SIZES.LG} />
                     }
                 </Box>
-                <Box item mt={1}>
+                <Box item mt={2}>
                     <Typography variant="h2" display="inline" gutterBottom>
                         <Temp value={result.temp} fahreingheit={fahreingheit} />
                     </Typography>
                 </Box>
                 <Box item>
                     <Typography component="div">
-                        <Box fontWeight="fontWeightBold" m={1}>
+                        <Box fontWeight="fontWeightBold" mt={2}>
                             {resultDateStr}
                         </Box>
                     </Typography>
                 </Box>
+                </Box>
                 <Divider variant="middle" />
-                <Box item>
+                <Box display = "flex" alignItems="center" justifyContent="center" item>
                     <Typography component="div" className="description-title">
-                        <Box fontWeight="fontWeightMedium" m={1}>
+                        <Box fontWeight="fontWeightMedium" m={2}>
                             {weatherDescription}
                         </Box>
                     </Typography>
                 </Box>
-            </Box>
-        </>
+            </>
     );
 }

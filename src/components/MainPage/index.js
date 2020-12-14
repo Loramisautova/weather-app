@@ -7,6 +7,8 @@ import { SidePanel } from './SidePanel';
 import { Content } from './Content';
 import { NotFound } from './NotFound';
 
+import "./index.css";
+
 import "fontsource-roboto";
 
 export class MainPage extends React.PureComponent {
@@ -60,33 +62,37 @@ export class MainPage extends React.PureComponent {
 
     render() {
       const { result, city, error, fahreingheit } = this.state;
+      const cls = `main-page ${city ? 'main-page_result' : ''}`;
       
         return (
-          <Grid container>
-            <Grid item xs={3}>
-              <SidePanel
-                result={result}
-                city={city}
-                checked={fahreingheit}
-                onSearch={this.handleSearchCity}
-                // isSubmitted={isSubmitted}
-              />
-            </Grid>
-            <Grid item xs={9}>
-              <Content 
-                forecast={result}
-                checked={fahreingheit}
-                onChange={this.handleChange}
-              />
-            </Grid>
-            {/* {
-              result &&
-              <WeatherForecat result={result ? result.daily : undefined} />
-            } */}
-            {
-              error && 
-              <NotFound />
-            }
+          <Grid className={cls} justify="center" container> 
+              <Grid item xs={Boolean(city) ? 3 : 6}>
+                  <SidePanel
+                    result={result}
+                    city={city}
+                    checked={fahreingheit}
+                    onSearch={this.handleSearchCity}
+                    // isSubmitted={isSubmitted}
+                  />
+                </Grid>
+                {
+                  city &&
+                    <Grid item xs={9}>
+                    <Content 
+                      forecast={result}
+                      checked={fahreingheit}
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                }
+                {/* {
+                  result &&
+                  <WeatherForecat result={result ? result.daily : undefined} />
+                } */}
+                {
+                  error && 
+                  <NotFound />
+                }
           </Grid>
         );
     }

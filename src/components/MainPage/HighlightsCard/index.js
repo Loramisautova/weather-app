@@ -4,12 +4,12 @@ import { format, fromUnixTime } from "date-fns";
 
 import "./index.css";
 
-export const HighlightsCard = ({highlights}) => {
+export const HighlightsCard = ({ highlights }) => {
     const {
         humidity,
         uvi,
         wind_speed,
-        visibility,
+        pressure,
     } = highlights;
 
     const sunset = format(fromUnixTime(highlights.sunset), "HH:mm");
@@ -17,7 +17,7 @@ export const HighlightsCard = ({highlights}) => {
 
     return (
         <Box component="div" display = "flex" flexDirection = "column">
-            <Box component="div" display = "flex" flexDirection = "row" xs={12}>
+            <Box className="highlight-card-row" item display = "flex" flexDirection = "row" xs={12}>
                 <Box className= "highlight-card" display = "flex" flexDirection = "column" m={1}>
                     <Typography gutterBottom variant="subtitle1" color="textSecondary">
                             Sunrise
@@ -49,7 +49,7 @@ export const HighlightsCard = ({highlights}) => {
                     </Typography>
                 </Box>
             </Box>
-            <Box component="div" display = "flex" flexDirection = "row" xs={12}>
+            <Box className="highlight-car-row" item display = "flex" flexDirection = "row" xs={12}>
                 <Box className= "highlight-card" display = "flex" flexDirection = "column" m={1}>
                     <Typography gutterBottom variant="subtitle1" color="textSecondary">
                             Sunset
@@ -62,11 +62,11 @@ export const HighlightsCard = ({highlights}) => {
                 </Box>
                 <Box className= "highlight-card" display = "flex" flexDirection = "column" m={1}>
                     <Typography gutterBottom variant="subtitle1" color="textSecondary">
-                            Visibility
+                        Pressure
                     </Typography>
                     <Typography component="div">
                         <Box fontWeight="fontWeightBold" m={1}>
-                            {visibility/1000} km
+                            {pressure} hPa
                         </Box>
                     </Typography>
                 </Box>

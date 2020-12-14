@@ -9,10 +9,6 @@ export const SearchBar = (props) =>  {
     const [address, setAddress] = useState('');
     const [suggestions, setSuggestions] = useState([]);
 
-    const handleSubmit = () => {
-        props.onSearch(address)
-    };
-
     useEffect(() => {
         const getSuggestions = async () => {
 
@@ -43,8 +39,9 @@ export const SearchBar = (props) =>  {
         setAddress(e.target.value)
     }
         
-    const handleSuggestionChange = (e, value) => {
-        setAddress(value);   
+    const handleSuggestionChange = (e, address) => {
+        setAddress(address)
+        props.onSearch(address);
     }
 
     return (
@@ -65,7 +62,7 @@ export const SearchBar = (props) =>  {
                         type: 'search',
                         endAdornment: (
                             <InputAdornment>
-                            <IconButton onClick={handleSubmit}>
+                            <IconButton>
                                 <SearchIcon />
                             </IconButton>
                             </InputAdornment>
@@ -79,4 +76,3 @@ export const SearchBar = (props) =>  {
         />
     );
 }
-

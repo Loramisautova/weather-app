@@ -1,14 +1,15 @@
 import React from 'react';
-import { Box, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 import { SearchBar } from '../SearchBar/index';
 import { TodayForecast } from '../TodayForecast/index';
 import { CityPanel } from '../CityPanel/index';
 
+import "./index.css";
+
 export const SidePanel = ({ onSearch, result, city, checked }) => {
     return (
-        <Box p={2}>
-            <Grid container>
+            <Grid className="side-panel-box" container>
                 <Grid item xs={12}>
                     <SearchBar onSearch={onSearch} />
                 </Grid>
@@ -25,6 +26,5 @@ export const SidePanel = ({ onSearch, result, city, checked }) => {
                     }
                 </Grid>
             </Grid>
-        </Box>
     );
 }

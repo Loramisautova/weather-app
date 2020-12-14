@@ -1,0 +1,10 @@
+
+.main-page {
+    height: 100vh;
+    background-color: white;
+}
+
+.main-page_result {
+    padding: 40px;
+    background-color: #cdcfd0;
+}

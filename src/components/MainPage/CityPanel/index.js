@@ -7,9 +7,9 @@ export const CityPanel = (props) => {
     const { city } = props;
 
     return (
-        <Box>
-            <Typography className="city-title" component="div" variant="h2" gutterBottom>
-                <Box textAlign="center" fontWeight="fontWeightBold" m={1}>
+        <Box className="city-box" display="flex" alignItems="center" justifyContent="center">
+            <Typography component="div" variant="h6" gutterBottom>
+                <Box fontWeight="fontWeightBold" textAlign="center">
                     {city}
                 </Box>
             </Typography>

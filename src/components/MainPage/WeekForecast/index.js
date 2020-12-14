@@ -3,22 +3,23 @@ import { Box } from "@material-ui/core";
 
 import { ForecastCard } from '../ForecastCard';
 
-export const WeekForecast = ({ forecast, fahreingheit }) => {
-  const weekDays = forecast.slice(1);
+export const WeekForecast = (props) => {
+  const { forecast, fahreingheit, selectedIndex } = props;
 
   return (
-    <Box display = "flex" flexDirection = "row" justifyContent="space-evenly" p={3}>
+    <Box display = "flex" flexDirection = "row" justifyContent="space-between">
       {
         forecast &&
-          weekDays.map((day) =>
+          forecast.map((day, index) =>
             <ForecastCard
-              key={day.dt}
               day={day}
+              key={day.dt}
               fahreingheit={fahreingheit}
+              selectedIndex={selectedIndex === index}
+              onSelect={() => props.onSelect(index)}
           />
         )
       }
     </Box>
   );
 }
-
